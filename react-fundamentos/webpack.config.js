@@ -30,6 +30,11 @@ module.exports = {
         exclude:/node_modules/, 
         use:'babel-loader' 
       },
+      {
+        test:/\.s?css$/,
+        use:['style-loader','css-loader'],
+        exclude: /node_modules/,
+      }
     ]
   },
   devServer:{
