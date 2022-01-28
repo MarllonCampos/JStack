@@ -1,7 +1,7 @@
 import React from 'react'
 
 import PropTypes from 'prop-types'
-import Button from './Button';
+import Button from '../Button';
 
 
 export default function PostHeader(props) {
@@ -11,9 +11,9 @@ export default function PostHeader(props) {
         {props.post.read && <s>{props.post.title}</s>}
         {!props.post.read && props.post.title}
       </strong>
-      <Button 
+      <Button
         onClick={() => props.onRemove(props.post.id)}
-        
+
       >
         Remover
       </Button>

@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import Button from "./Button";
-import { ThemeContext } from "./ThemeContext";
-import styles from './Header.scss'
-export function Header({ title, children, ...props }) {
+
+import Button from "../Button";
+import Title from "../Title";
+
+
+import { ThemeContext } from "../../contexts/ThemeContext";
+
+
+function Header({ title, children, ...props }) {
   const { onToggleTheme } = useContext(ThemeContext);
+
   return (
     <div>
-      <h1 id="title" className={styles.title}>{title}</h1>
+      <Title id="title">{title}</Title>
       <Button onClick={onToggleTheme}>Mudar Tema</Button>
       {children}
     </div>
@@ -22,3 +28,5 @@ Header.propTypes = {
 Header.defaultProps = {
   title: `Notícias SP Blog`,
 };
+
+export default Header
