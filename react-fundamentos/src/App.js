@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Post } from "./Post";
 import { Header } from "./Header";
 import ThemeProvider from "./ThemeContext";
-
+import styles from './App.scss'
 
 const fixedPosts = [
   {
@@ -59,7 +59,7 @@ export function App() {
   return (
     <ThemeProvider>
       <Header>
-        <h2>Posts da semana</h2>
+        <h2 className={styles.title}>Posts da semana</h2>
         <button onClick={handleRefresh}>Atualizar</button>
       </Header>
       <hr />

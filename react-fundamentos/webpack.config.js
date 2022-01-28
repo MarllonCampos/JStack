@@ -16,7 +16,7 @@ module.exports = {
       }),
     ],
   },
-  mode:'development',
+  mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
@@ -26,18 +26,24 @@ module.exports = {
   module: {
     rules: [
       {
-        test:/\.jsx?$/, 
-        exclude:/node_modules/, 
-        use:'babel-loader' 
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
       },
       {
-        test:/\.s?css$/,
-        use:['style-loader','css-loader'],
+        test: /\.scss$/,
+        use: ['style-loader',
+          {
+            loader: 'css-loader',
+            options: { modules: true }
+          },
+          'sass-loader'
+        ],
         exclude: /node_modules/,
       }
     ]
   },
-  devServer:{
-    port:3000
+  devServer: {
+    port: 3000
   }
 };
