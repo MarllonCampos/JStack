@@ -5,19 +5,17 @@ import Header from '../Header';
 import PostsList from '../PostsList';
 
 
-function Layout({ onToggleTheme, selectedTheme }) {
+function Layout() {
 
   const theme = useTheme()
   return (
     <>
       <Header
-        onToggleTheme={onToggleTheme}
-        selectedTheme={selectedTheme}
+
       />
       <PostsList />
       <Footer
-        onToggleTheme={onToggleTheme}
-        selectedTheme={selectedTheme}
+
       />
 
       <div style={{
@@ -25,7 +23,7 @@ function Layout({ onToggleTheme, selectedTheme }) {
         padding: theme.spacing.large, marginTop: theme.spacing.large,
         borderRadius: theme.borderRadius
       }}>
-        Using Use theme to change styles
+        Using 'useTheme' to change inline-styles
       </div>
     </>
   );
