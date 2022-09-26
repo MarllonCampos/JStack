@@ -7,32 +7,32 @@ import { Title } from "./styles";
 
 const fixedPosts = [
   {
-    title: "Title#01",
-    subtitle: "Sub#01",
+    title: "Title#001",
+    subtitle: "Sub#001",
     likes: 20,
     id: Math.random(),
     read: true,
     removed: false,
   },
   {
-    title: "Title#02",
-    subtitle: "Sub#02",
+    title: "Title#002",
+    subtitle: "Sub#002",
     likes: 10,
     id: Math.random(),
     read: false,
     removed: true
   },
   {
-    title: "Title#03",
-    subtitle: "Sub#03",
+    title: "Title#003",
+    subtitle: "Sub#003",
     likes: 50,
     id: Math.random(),
     read: false,
     removed: false
   },
   {
-    title: "Title#04",
-    subtitle: "Sub#04",
+    title: "Title#004",
+    subtitle: "Sub#004",
     likes: 50,
     id: Math.random(),
     read: true,
@@ -43,16 +43,16 @@ const fixedPosts = [
 function App() {
   const [posts, setPosts] = useState(fixedPosts);
   function handleRefresh() {
+
     setPosts((prevState) => [
       ...prevState,
       {
-        title: `Title#0${prevState.length + 1}`,
-        subtitle: `Sub#0${prevState.length + 1}`,
+        title: `Title#${(prevState.length + 1).toString().padStart(3, 0)}`,
+        subtitle: `Sub#${(prevState.length + 1).toString().padStart(3, 0)}`,
         likes: parseInt(Math.random() * 100),
         id: Math.random(),
       },
     ]);
-    console.log({ posts });
   }
 
   function handleRemovePost(postId) {

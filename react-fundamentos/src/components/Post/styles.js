@@ -1,4 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+
+export const Container = styled.article`
+  display: inline-block; 
+  margin: 12px 24px;
+  max-width: 11rem;
+  ${({ removed }) => css`
+    opacity: ${({ removed }) => removed ? 0.5 : 1};
+    color: ${({ removed }) => removed ? "#f00" : "#faa"};
+  
+  `}
+`;
+
+export const PostMetaInfo = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
 
 export const Subtitle = styled.small`
   display:block;

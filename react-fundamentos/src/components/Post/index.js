@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import PostHeader from "./PostHeader";
-import styles from './Post.scss'
 
-import { Subtitle, Rate } from './styles'
+import { Container, PostMetaInfo, Subtitle, Rate } from './styles'
 
 
 
 function Post(props) {
   return (
-    <article className={props.post.removed ? styles.post + " " + styles.postDeleted : styles.post}>
+    <Container removed={props.post.removed}>
       <PostHeader
         post={{
           id: props.post.id,
@@ -19,9 +18,11 @@ function Post(props) {
         onRemove={props.onRemove}
         theme={props.theme}
       />
-      <Subtitle>{props.post.subtitle ? props.post.subtitle : 'Subtítulo da notícia'}</Subtitle>
-      <Rate>Media : {props.post.likes / 2} </Rate>
-    </article>
+      <PostMetaInfo>
+        <Subtitle>{props.post.subtitle ? props.post.subtitle : 'Subtítulo da notícia'}</Subtitle>
+        <Rate>Media : {props.post.likes / 2} </Rate>
+      </PostMetaInfo>
+    </Container>
   );
 }
 

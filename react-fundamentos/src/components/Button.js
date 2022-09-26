@@ -14,9 +14,7 @@ export default function Button(props) {
         color: theme == "dark" ? "#fff" : "#000",
         border: theme == "light" ? "1px solid black" : "",
         borderRadius: 5,
-        width: 80,
-        height: 35,
-        marginLeft: 15,
+        padding: "8px 16px",
       }}
     >
       {props.children}
