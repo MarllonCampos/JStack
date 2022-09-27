@@ -1,4 +1,4 @@
-import React, { useMemo, useState, createContext, useEffect } from 'react';
+import React, { useMemo, useState, createContext, useEffect, useRef } from 'react';
 
 import { ThemeProvider } from 'styled-components'
 
@@ -11,7 +11,8 @@ import themes from './styles/themes'
 
 export const ThemeContext = createContext();
 function App() {
-  const [localTheme, setLocalTheme] = useLocalState('theme', '')
+  const [localTheme, setLocalTheme] = useLocalState('theme', '');
+  const firstRender = useRef(true);
   const [theme, setTheme] = useState(localTheme || 'dark');
 
 
@@ -23,6 +24,14 @@ function App() {
     return themes[theme] || themes.dark
   }, [theme]);
 
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false
+      return;
+    }
+    console.debug({ theme })
+  }, [theme])
 
   useEffect(() => {
     setLocalTheme(theme)
