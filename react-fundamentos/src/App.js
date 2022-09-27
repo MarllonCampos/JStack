@@ -1,4 +1,4 @@
-import React, { useMemo, useState, createContext } from 'react';
+import React, { useMemo, useState, createContext, useEffect } from 'react';
 
 import { ThemeProvider } from 'styled-components'
 
@@ -20,9 +20,13 @@ function App() {
   }
 
   const currentTheme = useMemo(() => {
-    setLocalTheme(theme)
     return themes[theme] || themes.dark
   }, [theme]);
+
+
+  useEffect(() => {
+    setLocalTheme(theme)
+  }, [theme])
 
   return (
     <ThemeProvider theme={currentTheme}>
