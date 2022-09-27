@@ -42,9 +42,17 @@ function App() {
       <ThemeContext.Provider
         value={{ theme, onToggleTheme: handleToogleTheme }}
       >
-
+        <button onClick={handleToogleTheme}>Toggle</button>
         <GlobalStyle />
-        <Layout />
+        {theme === 'dark' && <Layout />}
+        <br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br />
+        <br />
       </ThemeContext.Provider>
     </ThemeProvider>
   );
