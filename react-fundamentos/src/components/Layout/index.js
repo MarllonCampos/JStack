@@ -6,37 +6,26 @@ import Header from '../Header';
 import PostsList from '../PostsList';
 
 
-function Layout() {
+export default class Layout extends React.Component {
 
-  const theme = useTheme()
-  const { theme: layoutTheme, handleToggleTheme } = useContext(ThemeContext)
+  componentWillUnmount() {
+    console.log('Componente vai desmontar...')
+    document.removeEventListener('scroll', this.handleScroll)
 
+  }
 
-  useEffect(() => {
-    function handleScroll() {
-      console.debug('Scrolled')
-    }
-    document.addEventListener('scroll', handleScroll)
+  componentDidMount() {
+    document.addEventListener('scroll', this.handleScroll)
+  }
+  handleScroll = () => {
+    console.log('scrolled...')
+  }
 
-    return () => document.removeEventListener('scroll', handleScroll)
-  }, [])
-  return (
-    <>
+  render() {
+    return (<>
       <Header />
       <PostsList />
-      <Footer
-
-      />
-
-      <div style={{
-        backgroundColor: theme.footerBackgroundColor,
-        padding: theme.spacing.large, marginTop: theme.spacing.large,
-        borderRadius: theme.borderRadius
-      }}>
-        Using 'useTheme' to change inline-styles
-      </div>
-    </>
-  );
+      <Footer />
+    </>)
+  }
 }
-
-export default Layout;
