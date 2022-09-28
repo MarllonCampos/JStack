@@ -27,6 +27,10 @@ class App extends React.Component {
     })
   }
 
+  componentDidCatch(error, info) {
+    console.log('componentDidCatch', { error, info })
+  }
+
   render() {
     return (
       <ThemeProvider>
