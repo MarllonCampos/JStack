@@ -54,24 +54,19 @@ export const ThemeContext = createContext();
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props)
+  state = {
+    theme: 'light',
+  };
 
-    this.state = {
-      theme: 'light',
-    };
 
-    this.handleToggleTheme = this.handleToggleTheme.bind(this)
-  }
 
-  handleToggleTheme() {
-    console.log(this)
+  handleToggleTheme = () => {
     this.setState(prevState => ({ theme: prevState.theme === 'dark' ? 'light' : 'dark' }))
   }
 
   render() {
     const { theme } = this.state
-
+    console.log('App renderizado');
     return (
       <ThemeProvider theme={themes[theme] || themes.dark}>
         <ThemeContext.Provider
