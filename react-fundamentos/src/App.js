@@ -66,7 +66,6 @@ class App extends React.Component {
 
   render() {
     const { theme } = this.state
-    console.log('App renderizado');
     return (
       <ThemeProvider theme={themes[theme] || themes.dark}>
         <ThemeContext.Provider

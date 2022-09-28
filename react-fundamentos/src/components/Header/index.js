@@ -1,4 +1,5 @@
 import React, { Component, useContext } from 'react';
+import PropTypes from 'prop-types'
 import { ThemeContext } from '../../App';
 
 import { Container } from './styles';
@@ -16,6 +17,10 @@ import { Container } from './styles';
 // }
 
 export default class Header extends Component {
+  static propTypes = {
+    theme: PropTypes.string.isRequired,
+    onToggleTheme: PropTypes.func.isRequired,
+  };
 
   render() {
     const { theme, onToggleTheme } = this.props
@@ -30,3 +35,4 @@ export default class Header extends Component {
     )
   }
 }
+
