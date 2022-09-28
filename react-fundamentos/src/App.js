@@ -20,8 +20,8 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log({
-      currentStae: this.state,
+    console.log('componentDidUpdate', {
+      currentState: this.state,
       prevState,
       prevProps
     })
@@ -29,6 +29,16 @@ class App extends React.Component {
 
   componentDidCatch(error, info) {
     console.log('componentDidCatch', { error, info })
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate', {
+      currentState: this.state,
+      nextState,
+      nextProps
+    })
+
+    return true
   }
 
   render() {
