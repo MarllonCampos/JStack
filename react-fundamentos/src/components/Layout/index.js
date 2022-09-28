@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useTheme } from 'styled-components';
-import { ThemeContext } from '../../App';
+import { ThemeContext } from '../../contexts/ThemeContext';
 import Footer from '../Footer';
 import Header from '../Header';
 import PostsList from '../PostsList';
@@ -9,7 +9,7 @@ import PostsList from '../PostsList';
 function Layout() {
 
   const theme = useTheme()
-  const { theme: layoutTheme, onToggleTheme } = useContext(ThemeContext)
+  const { theme: layoutTheme, handleToggleTheme } = useContext(ThemeContext)
 
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function Layout() {
   }, [])
   return (
     <>
-      <Header theme={layoutTheme} onToggleTheme={onToggleTheme} />
+      <Header />
       <PostsList />
       <Footer
 

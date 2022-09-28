@@ -1,37 +1,23 @@
-import React, { Component, useContext } from 'react';
-import PropTypes from 'prop-types'
-import { ThemeContext } from '../../App';
+import React, { Component } from 'react';
 
 import { Container } from './styles';
-// export default function Header() {
-//   const { theme, onToggleTheme } = useContext(ThemeContext)
-//   return (
-//     <Container>
-//       <h1>Blog Do Marllon</h1>
-
-//       <button type="button" onClick={onToggleTheme}>
-//         {theme === 'dark' ? '🌞' : '🌚'}
-//       </button>
-//     </Container>
-//   )
-// }
+import { ThemeContext } from '../../contexts/ThemeContext'
 
 export default class Header extends Component {
-  static propTypes = {
-    theme: PropTypes.string.isRequired,
-    onToggleTheme: PropTypes.func.isRequired,
-  };
+
 
   render() {
-    const { theme, onToggleTheme } = this.props
     return (
-      <Container>
-        <h1>Blog Do Marllon</h1>
-
-        <button type="button" onClick={onToggleTheme}>
-          {theme === 'dark' ? '🌞' : '🌚'}
-        </button>
-      </Container>
+      <ThemeContext.Consumer>
+        {({ theme, handleToggleTheme }) => (
+          <Container>
+            <h1>Blog Do Marllon</h1>
+            <button type="button" onClick={handleToggleTheme}>
+              {theme === 'dark' ? '🌞' : '🌚'}
+            </button>
+          </Container>
+        )}
+      </ThemeContext.Consumer>
     )
   }
 }
