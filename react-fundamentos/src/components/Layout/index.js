@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useTheme } from 'styled-components';
+import { ThemeContext } from '../../App';
 import Footer from '../Footer';
 import Header from '../Header';
 import PostsList from '../PostsList';
@@ -8,6 +9,8 @@ import PostsList from '../PostsList';
 function Layout() {
 
   const theme = useTheme()
+  const { theme: layoutTheme, onToggleTheme } = useContext(ThemeContext)
+
 
   useEffect(() => {
     function handleScroll() {
@@ -19,9 +22,7 @@ function Layout() {
   }, [])
   return (
     <>
-      <Header
-
-      />
+      <Header theme={layoutTheme} onToggleTheme={onToggleTheme} />
       <PostsList />
       <Footer
 
