@@ -12,11 +12,17 @@ import themes from './styles/themes'
 
 
 class App extends React.Component {
-
+  state = {
+    changed: false
+  }
+  componentDidMount() {
+    console.log('<App /> componentDidMount')
+  }
 
   render() {
     return (
       <ThemeProvider>
+        <button onClick={() => this.setState({ changed: true })}> Change </button>
         <ThemeContext.Consumer>
           {({ theme }) => (
             <StyledThemeProvider theme={themes[theme] || themes.dark}>
