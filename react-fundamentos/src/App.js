@@ -44,15 +44,8 @@ function App() {
       >
         <button onClick={handleToogleTheme}>Toggle</button>
         <GlobalStyle />
-        {theme === 'dark' && <Layout />}
-        <br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br />
-        <br />
+        <Layout />
+
       </ThemeContext.Provider>
     </ThemeProvider>
   );

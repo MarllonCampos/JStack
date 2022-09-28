@@ -5,7 +5,22 @@ import Post from './Post';
 
 import posts from './posts';
 
-export default function PostsList() {
+export default class PostsList extends React.Component {
+
+  render() {
+    return (
+      <ContainerComponent />)
+  }
+}
+
+// export default function PostsList() {
+//   return (
+//     <ContainerComponent />
+//   );
+// }
+
+
+function ContainerComponent() {
   return (
     <Container>
       {posts.map((post) => (
@@ -16,5 +31,5 @@ export default function PostsList() {
         />
       ))}
     </Container>
-  );
+  )
 }
