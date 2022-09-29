@@ -6,7 +6,18 @@ import Post from './Post';
 import posts from './posts';
 
 export default class Posts extends React.Component {
+  componentWillUnmount() {
+    console.log('Componente vai desmontar...')
+    document.removeEventListener('scroll', this.handleScroll)
 
+  }
+
+  componentDidMount() {
+    document.addEventListener('scroll', this.handleScroll)
+  }
+  handleScroll = () => {
+    console.log('scrolled...')
+  }
   render() {
     return (
       <ContainerComponent />)

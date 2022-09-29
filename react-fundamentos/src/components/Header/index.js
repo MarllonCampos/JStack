@@ -1,24 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Container } from './styles';
 import { ThemeContext } from '../../contexts/ThemeContext'
+import { useHistory } from 'react-router-dom';
 
-export default class Header extends Component {
+export default function Header() {
+  const history = useHistory();
 
-
-  render() {
-    return (
-      <ThemeContext.Consumer>
-        {({ theme, handleToggleTheme }) => (
-          <Container>
-            <h1>Blog Do Marllon</h1>
-            <button type="button" onClick={handleToggleTheme}>
-              {theme === 'dark' ? '🌞' : '🌚'}
-            </button>
-          </Container>
-        )}
-      </ThemeContext.Consumer>
-    )
+  function handleNavigate() {
+    history.push('/home')
   }
+  return (
+    <ThemeContext.Consumer>
+      {({ theme, handleToggleTheme }) => (
+        <Container>
+          <h1>Blog Do Marllon</h1>
+          <button type="button" onClick={handleToggleTheme}>
+            {theme === 'dark' ? '🌞' : '🌚'}
+          </button>
+          <button onClick={handleNavigate} style={{ color: "#fff" }}>Voltar home</button>
+        </Container>
+      )}
+    </ThemeContext.Consumer>
+  )
 }
 
