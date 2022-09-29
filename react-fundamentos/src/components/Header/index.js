@@ -8,7 +8,7 @@ export default function Header() {
   const history = useHistory();
 
   function handleNavigate() {
-    history.push('/home')
+    history.push('/')
   }
   return (
     <ThemeContext.Consumer>

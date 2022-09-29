@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-
+import { Container } from './styles'
 
 
 export default class Post extends React.Component {
@@ -22,10 +22,10 @@ export default class Post extends React.Component {
 
     console.log(this.props.match.params, this.queryParams.get('queryParam'));
     return (
-      <>
+      <Container>
         <button onClick={this.handleNavigate}>Voltar para posts</button>
         <h1>Post</h1>
-      </>
+      </Container>
     )
   }
 }

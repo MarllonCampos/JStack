@@ -9,6 +9,10 @@ export const Container = styled.footer`
   border-radius: 10px;
   justify-content: space-between;
   margin-top: 24px;
+  position: absolute;
+  left:8px;
+  right:8px;
+  bottom: 8px;
   button {
     cursor: pointer;
     background: transparent;
