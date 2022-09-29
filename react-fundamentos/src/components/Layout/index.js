@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import Routes from '../../Routes';
 import Footer from '../Footer';
 import Header from '../Header';
-import PostsList from '../PostsList';
 
-
+import { Nav } from './styles'
 export default class Layout extends React.Component {
 
   componentWillUnmount() {
@@ -22,10 +23,15 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    return (<>
-      <Header />
-      <PostsList />
-      <Footer />
-    </>)
+    return (
+      <BrowserRouter>
+        <Header />
+        <Nav>
+          <Link to="/" >Home</Link>
+          <Link to="/posts" >Posts</Link>
+        </Nav>
+        <Routes />
+        <Footer />
+      </BrowserRouter>)
   }
 }
