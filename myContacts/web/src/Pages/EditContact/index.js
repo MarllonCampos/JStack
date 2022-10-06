@@ -1,7 +1,11 @@
 // import { Container } from './styles';
 
+import PageHeader from '../../components/PageHeader';
+
 function EditContact() {
-  return 'EditContactPage';
+  return (
+    <PageHeader title="Novo contato" />
+  );
 }
 
 export default EditContact;

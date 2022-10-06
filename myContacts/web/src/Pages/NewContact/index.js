@@ -1,7 +1,11 @@
 // import { Container } from './styles';
 
+import PageHeader from '../../components/PageHeader';
+
 function NewContact() {
-  return 'NewContactPage';
+  return (
+    <PageHeader />
+  );
 }
 
 export default NewContact;
