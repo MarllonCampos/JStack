@@ -7,7 +7,7 @@ function EditContact() {
   return (
     <>
       <PageHeader title="Novo contato" />
-      <ContactForm />
+      <ContactForm buttonLabel="Salvar contato" />
     </>
   );
 }
