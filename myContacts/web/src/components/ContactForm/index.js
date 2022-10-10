@@ -9,11 +9,19 @@ function ContactForm({ buttonLabel }) {
   return (
     <Form>
       <FormGroup>
-        <Input placeholder="Nome" />
+        <Input
+          placeholder="Nome"
+          onChange={(event) => { console.log(event.target.classList.value); }}
+        />
       </FormGroup>
 
-      <FormGroup>
-        <Input placeholder="E-mail" />
+      <FormGroup
+        error="O formato do e-mail é invalido"
+      >
+        <Input
+          placeholder="E-mail"
+          error
+        />
       </FormGroup>
 
       <FormGroup>
