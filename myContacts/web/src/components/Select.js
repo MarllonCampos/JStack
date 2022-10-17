@@ -11,7 +11,12 @@ export default styled.select`
   padding: 0 16px;
   font-size: 16px;
 
+
  &:focus {
   outline: 2px solid ${({ theme }) => theme.colors.primary.main}
+ }
+
+ option {
+  font-weight: bold;
  }
 `;

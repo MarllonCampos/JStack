@@ -57,6 +57,7 @@ function ContactForm({ buttonLabel }) {
 
       <FormGroup error={getErrorMessageByFieldName('email')}>
         <Input
+          type="email"
           placeholder="E-mail"
           value={email}
           onChange={handleEmailChange}
@@ -66,6 +67,7 @@ function ContactForm({ buttonLabel }) {
 
       <FormGroup>
         <Input
+          type="tel"
           placeholder="Telefone"
           value={phone}
           onChange={handlePhoneChange}
@@ -77,7 +79,6 @@ function ContactForm({ buttonLabel }) {
         <Select
           value={category}
           onChange={handleCategoryChange}
-
         >
           <option default value="">Categoria</option>
           <option value="Instagram">Instagram</option>
