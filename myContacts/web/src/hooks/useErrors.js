@@ -19,7 +19,9 @@ function useErrors() {
     setErrors((prevState) => prevState.filter((error) => error.field !== field));
   }
 
-  return { setError, removeError, getErrorMessageByFieldName };
+  return {
+    errors, setError, removeError, getErrorMessageByFieldName,
+  };
 }
 
 export default useErrors;
