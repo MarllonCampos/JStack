@@ -55,3 +55,7 @@ function Home() {
 }
 
 export default Home;
+
+fetch('http://localhost:4000')
+  .then((res) => console.log(res))
+  .catch((error) => console.log({ error }));

@@ -48,16 +48,16 @@ function ContactForm({ buttonLabel }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log({
-      name, email, phone, category,
-    });
+    // console.log({
+    //   name, email, phone, category,
+    // });
   }
 
   return (
     <Form onSubmit={handleSubmit} noValidate>
       <FormGroup error={getErrorMessageByFieldName('name')}>
         <Input
-          placeholder="Nome *"
+          placeholder="Nome*"
           value={name}
           onChange={handleNameChange}
           error={getErrorMessageByFieldName('name')}
