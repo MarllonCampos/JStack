@@ -1,44 +1,68 @@
-import React from 'react';
+/* eslint-disable camelcase */
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Container, Header, ListContainer, Card, InputSearchContainer,
+  Container, Header, ListHeader, Card, InputSearchContainer,
 } from './styles';
 import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
+import formatPhone from '../../utils/formatPhone';
 
-function Home() {
+export default function Home() {
+  const [contacts, setContacts] = useState([]);
+  const [orderBy, setOrderBy] = useState('asc');
+
+  function toggleOrderBy() {
+    setOrderBy((prevState) => (prevState === 'asc' ? 'desc' : 'asc'));
+  }
+  useEffect(() => {
+    fetch('http://localhost:3001/contacts?')
+      .then(async (res) => {
+        const json = await res.json();
+        setContacts(json);
+      })
+
+      .catch((error) => console.log({ error }));
+  }, []);
+
   return (
     <Container>
       <InputSearchContainer>
         <input type="text" placeholder="Pesquisar contato" />
       </InputSearchContainer>
       <Header>
-        <strong>3 contatos</strong>
+        <strong>
+          {contacts.length}
+          {' '}
+          {contacts.length === 1 ? 'contato' : 'contatos'}
+        </strong>
         <Link to="/new">Novo contato</Link>
       </Header>
 
-      <ListContainer>
-        <header>
-          <button type="button">
-            <span>Nome</span>
-            <img src={arrow} alt="Arrow" />
-          </button>
-        </header>
+      <ListHeader>
+        <button type="button">
+          <span>Nome</span>
+          <img src={arrow} alt="Arrow" />
+        </button>
+      </ListHeader>
 
-        <Card>
+      {contacts.map(({
+        category_name, email, id, name, phone,
+      }) => (
+        <Card key={id}>
           <div className="info">
             <div className="contact-name">
-              <strong>Marllon Campos</strong>
-              <small>instagram</small>
+              <strong>{name}</strong>
+              {category_name && <small>{category_name}</small>}
             </div>
 
-            <span>marllondcsp@gmail.com</span>
-            <span>(11) 99999-9999</span>
+            <span>{email}</span>
+            <span>{formatPhone(phone)}</span>
           </div>
 
           <div className="actions">
-            <Link to="/edit/123">
+            <Link to={`/edit/${id}`}>
               <img src={edit} alt="Edit" />
             </Link>
 
@@ -47,15 +71,9 @@ function Home() {
             </button>
           </div>
         </Card>
+      ))}
 
-      </ListContainer>
     </Container>
 
   );
 }
-
-export default Home;
-
-fetch('http://localhost:4000')
-  .then((res) => console.log(res))
-  .catch((error) => console.log({ error }));
