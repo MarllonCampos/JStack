@@ -12,11 +12,10 @@ import formatPhone from '../../utils/formatPhone';
 export default function Home() {
   const [contacts, setContacts] = useState([]);
   const [orderBy, setOrderBy] = useState('asc');
-
-  function handleToggleOrderBy() {
-    setOrderBy((prevState) => (prevState === 'asc' ? 'desc' : 'asc'));
-  }
-
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredContacts = contacts.filter((contact) => (contact.name
+    .toLowerCase().includes(searchTerm.toLowerCase())
+  ));
   useEffect(() => {
     fetch(`http://localhost:3001/contacts?orderBy=${orderBy}`)
       .then(async (res) => {
@@ -27,28 +26,39 @@ export default function Home() {
       .catch((error) => console.log({ error }));
   }, [orderBy]);
 
+  function handleToggleOrderBy() {
+    setOrderBy((prevState) => (prevState === 'asc' ? 'desc' : 'asc'));
+  }
+
+  function handleChangeSearchTerm(event) {
+    const { value } = event.target;
+    setSearchTerm(value);
+  }
+
   return (
     <Container>
       <InputSearchContainer>
-        <input type="text" placeholder="Pesquisar contato" />
+        <input type="text" value={searchTerm} placeholder="Pesquisar contato" onChange={handleChangeSearchTerm} />
       </InputSearchContainer>
       <Header>
         <strong>
-          {contacts.length}
+          {filteredContacts.length}
           {' '}
-          {contacts.length === 1 ? 'contato' : 'contatos'}
+          {filteredContacts.length === 1 ? 'contato' : 'contatos'}
         </strong>
         <Link to="/new">Novo contato</Link>
       </Header>
+      {filteredContacts.length > 0
+        && (
+          <ListHeader>
+            <button type="button" onClick={handleToggleOrderBy}>
+              <span>Nome</span>
+              <img src={arrow} alt="Arrow" className={`${orderBy}`} />
+            </button>
+          </ListHeader>
+        )}
 
-      <ListHeader>
-        <button type="button" onClick={handleToggleOrderBy}>
-          <span>Nome</span>
-          <img src={arrow} alt="Arrow" className={`${orderBy}`} />
-        </button>
-      </ListHeader>
-
-      {contacts.map(({
+      {filteredContacts.map(({
         category_name, email, id, name, phone,
       }) => (
         <Card key={id}>
