@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Container, Header, ListHeader, Card, InputSearchContainer,
@@ -13,9 +13,13 @@ export default function Home() {
   const [contacts, setContacts] = useState([]);
   const [orderBy, setOrderBy] = useState('asc');
   const [searchTerm, setSearchTerm] = useState('');
-  const filteredContacts = contacts.filter((contact) => (contact.name
-    .toLowerCase().includes(searchTerm.toLowerCase())
-  ));
+
+  const filteredContacts = useMemo(
+    () => (contacts.filter((contact) => (contact.name
+      .toLowerCase().includes(searchTerm.toLowerCase())))),
+    [searchTerm, contacts],
+  );
+
   useEffect(() => {
     fetch(`http://localhost:3001/contacts?orderBy=${orderBy}`)
       .then(async (res) => {
