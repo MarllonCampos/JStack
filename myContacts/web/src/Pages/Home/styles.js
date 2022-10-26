@@ -34,7 +34,7 @@ export const Header = styled.header`
 `;
 
 export const ListHeader = styled.header`
-  margin-top: 24px;
+  margin: 24px 0;
   border:0;
 
   button {
@@ -47,6 +47,13 @@ export const ListHeader = styled.header`
         margin-right: 8px;
         font-weight: bold;
         color: ${({ theme }) => theme.colors.primary.main}
+    }
+
+  }
+  img {
+    transition: transform 0.2s linear;
+    &.desc {
+      transform: rotate(180deg);
     }
   }
 
