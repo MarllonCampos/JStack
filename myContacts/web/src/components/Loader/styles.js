@@ -38,7 +38,7 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   inset:0;
-  position: absolute;
+  position: fixed;
   background: rgba(246,245,252,0.7);
   display: flex;
   align-items: center;
