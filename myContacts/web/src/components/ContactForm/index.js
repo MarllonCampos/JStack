@@ -11,7 +11,7 @@ import useErrors from '../../hooks/useErrors';
 import formatPhone from '../../utils/formatPhone';
 import CategoriesService from '../../services/CategoriesService';
 
-function ContactForm({ buttonLabel }) {
+function ContactForm({ buttonLabel, onSubmit }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -51,9 +51,10 @@ function ContactForm({ buttonLabel }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    // console.log({
-    //   name, email, phone, category,
-    // });
+    console.log(categoryId);
+    onSubmit({
+      name, email, phone, categoryId,
+    });
   }
   const loadCategories = useCallback(async () => {
     setIsLoadingCategories(true);
@@ -70,6 +71,9 @@ function ContactForm({ buttonLabel }) {
   useEffect(() => {
     loadCategories();
   }, []);
+  useEffect(() => {
+    console.log(categoryId);
+  }, [categoryId]);
 
   return (
     <Form onSubmit={handleSubmit} noValidate>
@@ -133,4 +137,5 @@ function ContactForm({ buttonLabel }) {
 export default ContactForm;
 ContactForm.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
