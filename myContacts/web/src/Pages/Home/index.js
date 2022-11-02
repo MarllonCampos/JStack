@@ -11,6 +11,7 @@ import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
 import sad from '../../assets/images/sad.svg';
 import emptyBox from '../../assets/images/empty-box.svg';
+import magnifierQuestion from '../../assets/images/magnifier-question.svg';
 
 import formatPhone from '../../utils/formatPhone';
 import Loader from '../../components/Loader';
@@ -19,7 +20,8 @@ import Button from '../../components/Button';
 import ContactsService from '../../services/ContactsService';
 
 import {
-  Container, Header, ListHeader, Card, InputSearchContainer, ErrorContainer, EmptyListContainer,
+  Container, Header, ListHeader,
+  Card, InputSearchContainer, ErrorContainer, EmptyListContainer, SearchNotFoundContainer,
 } from './styles';
 
 export default function Home() {
@@ -121,6 +123,15 @@ export default function Home() {
                 </button>
               </ListHeader>
             )}
+
+          {(contacts.length > 1 && filteredContacts.length === 0) && (
+            <SearchNotFoundContainer>
+              <img src={magnifierQuestion} alt="Magnifier Question" />
+              <span>Nenhum resultado foi enecontrado para
+                &quot;<strong>{searchTerm}</strong>&quot;
+              </span>
+            </SearchNotFoundContainer>
+          )}
 
           {filteredContacts.map(({
             category_name, email, id, name, phone,
