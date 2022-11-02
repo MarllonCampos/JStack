@@ -10,6 +10,8 @@ export default styled.select`
   outline: none;
   padding: 0 16px;
   font-size: 16px;
+  appearance: none;
+
 
 
  &:focus {
@@ -18,5 +20,11 @@ export default styled.select`
 
  option {
   font-weight: bold;
+ }
+
+ &[disabled] {
+  background-color: ${({ theme }) => theme.colors.gray[100]};
+  border-color: ${({ theme }) => theme.colors.gray[200]};
+
  }
 `;
